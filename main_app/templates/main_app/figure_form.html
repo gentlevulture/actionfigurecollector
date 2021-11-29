@@ -8,7 +8,11 @@
 {% block content %}
 
 <div class="page-header">
-  <h1>Add a Figure</h1>
+  {% if object %}
+    <h1>Change {{object.name}} Details</h1>
+  {% else %}
+    <h1>Add a Figure</h1>
+  {% endif %}
   <img src="{% static 'images/unbox.png' %}" alt="unbox"/>
 </div>
 <form action="" method="post" class="form-container">
