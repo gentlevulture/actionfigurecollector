@@ -14,7 +14,10 @@ def about(request):
 class FigureCreate(CreateView):
   model = Figure
   fields = '__all__'
-  success_url = '/figures/'
+  
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
 
 def figures_index(request):
   figures = Figure.objects.all()
