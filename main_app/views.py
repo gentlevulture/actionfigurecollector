@@ -22,7 +22,7 @@ class FigureCreate(CreateView):
     return super().form_valid(form)
 
 def figures_index(request):
-  figures = Figure.objects.all()
+  figures = Figure.objects.filter(user=request.user)
   return render(request, 'figures/index.html', { 'figures': figures })
 
 def figures_detail(request, figure_id):
