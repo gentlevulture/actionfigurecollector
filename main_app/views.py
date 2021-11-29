@@ -15,7 +15,7 @@ class Home(LoginView):
 def about(request):
   return render(request, 'about.html')
 
-class FigureCreate(CreateView):
+class FigureCreate(LoginRequiredMixin, CreateView):
   model = Figure
   fields = '__all__'
   
