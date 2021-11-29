@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from .models import Figure
 
@@ -21,10 +22,12 @@ class FigureCreate(CreateView):
     form.instance.user = self.request.user
     return super().form_valid(form)
 
+@login_required
 def figures_index(request):
   figures = Figure.objects.filter(user=request.user)
   return render(request, 'figures/index.html', { 'figures': figures })
 
+@login_required
 def figures_detail(request, figure_id):
   figure = Figure.objects.get(id=figure_id)
   return render(request, 'figures/detail.html', { 'figure': figure })
