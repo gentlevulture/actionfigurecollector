@@ -3,6 +3,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from .models import Figure
 
@@ -32,11 +33,11 @@ def figures_detail(request, figure_id):
   figure = Figure.objects.get(id=figure_id)
   return render(request, 'figures/detail.html', { 'figure': figure })
 
-class FigureUpdate(UpdateView):
+class FigureUpdate(LoginRequiredMixin, UpdateView):
   model = Figure
   fields = ['brand', 'description', 'scale']
 
-class FigureDelete(DeleteView):
+class FigureDelete(LoginRequiredMixin, DeleteView):
   model = Figure
   success_url = '/figures/'
 
