@@ -18,22 +18,24 @@
 <section class="card-container">
   {% for figure in figures %}
     <div class="card">
-      <div class="card-content">
-        <div class="card-img-container">
-          <img 
-            src="{% static 'images/af-silho.png' %}" 
-            alt="figure"
-            class="usr-img"
-          >
+      <a href="{% url 'figures_detail' figure.id %}">
+        <div class="card-content">
+          <div class="card-img-container">
+            <img 
+              src="{% static 'images/af-silho.png' %}" 
+              alt="figure"
+              class="usr-img"
+            >
+          </div>
+          <h2 class="card-title">{{ figure.name }}</h2>
+          {% if figure.scale > 0 %}
+            <p>{{ figure.scale }} inch scale {{ figure.brand }}</p>
+          {% else %}
+            <p>A {{ figure.brand }} miniature.</p>
+          {% endif %}
+          <p><small>{{ figure.description }}</small></p>
         </div>
-        <h2 class="card-title">{{ figure.name }}</h2>
-        {% if figure.scale > 0 %}
-          <p>{{ figure.scale }} inch scale {{ figure.brand }}</p>
-        {% else %}
-          <p>A {{ figure.brand }} miniature.</p>
-        {% endif %}
-        <p><small>{{ figure.description }}</small></p>
-      </div>
+      </a>
     </div>
   {% endfor %}
 </section>

@@ -12,3 +12,7 @@ def about(request):
 def figures_index(request):
   figures = Figure.objects.all()
   return render(request, 'figures/index.html', { 'figures': figures })
+
+def figures_detail(request, figure_id):
+  figure = Figure.objects.get(id=figure_id)
+  return render(request, 'figures/detail.html', { 'figure': figure })

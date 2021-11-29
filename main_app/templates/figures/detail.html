@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet" 
+  type="text/css" 
+  href="{% static 'css/figure-detail.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="figure-container">
+  <div class="figure-img">
+    <img 
+      src="{% static 'images/af-silho.png' %}" 
+      alt="figure"
+      class="usr-img"
+    >
+  </div>
+  <div class="figure-details">
+    <h1>{{ figure.name }}</h1>
+    {% if figure.scale > 0 %}
+      <h2>{{ figure.scale }} inch scale {{ figure.brand }}</h2>
+    {% else %}
+      <h2>A {{ figure.brand }} miniature.</h2>
+    {% endif %}
+    <p>{{ figure.description }}</p>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,219 @@
+.figure-container {
+  padding: 35px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.figure-img {
+  width: 75%;
+  max-width: 350px;
+}
+
+.usr-img {
+  width: 100%;
+  border-radius: var(--card-border-radius);
+}
+
+.figure-details {
+  width: 98%;
+}
+
+.figure-actions {
+  margin-top: 20px;
+}
+
+.cleanings-comic-container {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  align-items: center;
+}
+
+.subsection-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.subsection-content {
+  margin: 0 8px;
+}
+
+.comic-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.color-block {
+  opacity: 0.8;
+  height: 25px;
+  width: 25px;
+  margin-right: 10px;
+}
+
+.unclean,
+.clean,
+.no-comics,
+.all-comics {
+  margin: 0;
+  font-weight: bold;
+}
+
+.unclean,
+.no-comics {
+  color: var(--danger);
+}
+
+.clean,
+.all-comics {
+  color: var(--submit);
+}
+
+.figure-details h1 {
+  font-size: var(--font-xxl);
+  margin: 15px 0 3px;
+}
+
+.figure-details h2 {
+  font-size: var(--font-xl);
+  margin: 0 0 10px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.figure-details h3 {
+  margin: 20px 0 10px;
+  font-size: var(--font-l);
+}
+
+.figure-details p {
+  font-size: var(--font-reg);
+  margin: 5px 0;
+}
+
+.cleanings-comic-container > section {
+  width: 80%;
+  min-width: 360px;
+  border: var(--borders);
+  border-radius: var(--card-border-radius);
+  padding: 10px;
+  box-shadow: var(--card-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.subsection-title img {
+  height: 42px;
+  margin-left: 8px;
+}
+
+.subsection-title img:first-of-type {
+  margin-left: 16px;
+}
+
+.cleanings h2,
+.comics h2 {
+  font-size: 3.2rem;
+  margin: 0;
+}
+
+.cleanings h3,
+.comics h3 {
+  font-size: var(--font-xl);
+  margin: 10px 0;
+}
+
+.subsection-content p,
+.subsection-content input,
+.subsection-content select {
+  font-size: var(--font-l);
+}
+
+.subsection-content input,
+.subsection-content select {
+  margin-left: 5px;
+  padding: 3px;
+}
+
+.cleanings table {
+  width: calc(100% - 16px);
+  text-align: left;
+  border-collapse: collapse;
+  margin: 0 8px;
+}
+
+.cleanings td {
+  padding: 8px 5px;
+  font-size: var(--font-reg);
+}
+
+.cleanings th {
+  font-size: var(--font-l);
+  padding: 5px 5px 0;
+  border-bottom: rgb(36, 116, 248) solid 2px;
+}
+
+.cleanings tr:nth-child(even) {
+  background-color: #f3f3fd;
+}
+
+.comic-container p {
+  margin: 12px 0;
+}
+
+.comic-container a {
+  text-decoration: none;
+  color: #111;
+}
+
+.comic-container .btn {
+  padding: 3px 10px;
+  margin-left: 10px;
+}
+
+#file-input {
+  overflow: hidden;
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+}
+
+#file-name {
+  margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .figure-container {
+    padding: 35px 30px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+  }
+
+  .figure-img {
+    width: 25%;
+    max-width: 250px;
+    margin-right: 25px;
+  }
+
+  .cleanings-comic-container {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+
+  .cleanings-comic-container > section {
+    width: 45%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .cleanings-comic-container {
+    padding: 0 40px;
+  }
+}
