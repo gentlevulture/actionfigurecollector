@@ -21,11 +21,19 @@
       <a href="{% url 'figures_detail' figure.id %}">
         <div class="card-content">
           <div class="card-img-container">
+            {% if figure.photo.url %}
             <img 
-              src="{% static 'images/af-silho.png' %}" 
-              alt="figure"
+              src="{{figure.photo.url}}" 
+              alt="A photo of {{figure.name}}"
               class="usr-img"
             >
+            {% else %}
+              <img 
+                src="{% static 'images/af-silho.png' %}" 
+                alt="figure"
+                class="usr-img"
+              >
+            {% endif %}
           </div>
           <h2 class="card-title">{{ figure.name }}</h2>
           {% if figure.scale > 0 %}
