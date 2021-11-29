@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -58,3 +59,9 @@ def signup(request):
 class ComicCreate(CreateView):
   model = Comic
   fields = '__all__'
+
+class ComicList(ListView):
+  model = Comic
+
+class ComicDetail(DetailView):
+  model = Comic

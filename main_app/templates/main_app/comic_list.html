@@ -1,0 +1,39 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/comic-index.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+  <h1>All Referenced Comics</h1>
+  <img src="{% static 'images/Image-Comics.png' %}" alt="Image Comics" />
+  <img src="{% static 'images/DC-Black-Label.png' %}" alt="DC Black Label" /> 
+  <img src="{% static 'images/DC.png' %}" alt="DC Comics" />
+  <img src="{% static 'images/Empire-Comics.png' %}" alt="Empire Comics Vault" />
+  <img src="{% static 'images/Star-Wars.png' %}" alt="Star Wars" />
+  <img src="{% static 'images/Marvel-Comics.png' %}" alt="Marvel Comics" />
+</section>
+
+<section class="card-container">
+  {% for comic in comic_list %}
+  <div class="card" style="border-color:">
+    <div class="card-bg" style="background-color: "></div>
+    <a href="{% url 'comics_detail' comic.id %}">
+      <div class="card-content">
+        <h2>{{ comic.title }}</h2>
+        <h3>Issue #{{ comic.issue }}</h3>
+        <h4>A comic published by {{ comic.publisher }}</h4>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</section>
+
+{% endblock %}

@@ -31,7 +31,7 @@
       <ul>
         {% if user.is_authenticated %}
           <li><a href="{% url 'figures_index' %}">All Figures</a></li>
-          {% comment %} <li><a href="{% url 'comics_index' %}">All Comics</a></li> {% endcomment %}
+          <li><a href="{% url 'comics_index' %}">All Comics</a></li>
           <li><a href="{% url 'figures_create' %}">Add a Figure</a></li>
           <li><a href="{% url 'comics_create' %}">Add a Comic</a></li>
           <li><a href="{% url 'about' %}">About</a></li>

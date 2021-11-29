@@ -11,4 +11,6 @@ urlpatterns = [
   path('figures/<int:pk>/delete/', views.FigureDelete.as_view(), name='figures_delete'),
   path('accounts/signup/', views.signup, name='signup'),
   path('comics/create/', views.ComicCreate.as_view(), name='comics_create'),
+  path('comics/<int:pk>/', views.ComicDetail.as_view(), name='comics_detail'),
+  path('comics/', views.ComicList.as_view(), name='comics_index'),
 ]
