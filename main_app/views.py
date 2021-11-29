@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from django.contrib.auth.views import LoginView
 from .models import Figure
 
@@ -9,6 +10,10 @@ class Home(LoginView):
 
 def about(request):
   return render(request, 'about.html')
+
+class FigureCreate(CreateView):
+  model = Figure
+  fields = '__all__'
 
 def figures_index(request):
   figures = Figure.objects.all()
