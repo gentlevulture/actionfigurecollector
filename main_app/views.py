@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView
 from .models import Figure
 
@@ -23,3 +23,11 @@ def figures_index(request):
 def figures_detail(request, figure_id):
   figure = Figure.objects.get(id=figure_id)
   return render(request, 'figures/detail.html', { 'figure': figure })
+
+class FigureUpdate(UpdateView):
+  model = Figure
+  fields = ['brand', 'description', 'scale']
+
+class FigureDelete(DeleteView):
+  model = Figure
+  success_url = '/figures/'

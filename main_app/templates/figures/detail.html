@@ -27,6 +27,10 @@
       <h2>A {{ figure.brand }} miniature.</h2>
     {% endif %}
     <p>{{ figure.description }}</p>
+    <div class="figure-actions">
+      <a href="{% url 'figures_update' figure.id %}" class="btn warn">Change Details</a>
+      <a href="{% url 'figures_delete' figure.id %}" class="btn danger">Remove</a>
+    </div>
   </div>
 </section>
 
