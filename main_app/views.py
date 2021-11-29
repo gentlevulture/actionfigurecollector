@@ -64,28 +64,30 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'signup.html', context)
 
-class ComicCreate(CreateView):
+class ComicCreate(LoginRequiredMixin, CreateView):
   model = Comic
   fields = '__all__'
 
-class ComicList(ListView):
+class ComicList(LoginRequiredMixin, ListView):
   model = Comic
 
-class ComicDetail(DetailView):
+class ComicDetail(LoginRequiredMixin, DetailView):
   model = Comic
 
-class ComicUpdate(UpdateView):
+class ComicUpdate(LoginRequiredMixin, UpdateView):
   model = Comic
   fields = ['title', 'publisher']
 
-class ComicDelete(DeleteView):
+class ComicDelete(LoginRequiredMixin, DeleteView):
   model = Comic
   success_url = '/comics/'
 
+@login_required
 def assoc_comic(request, figure_id, comic_id):
   Figure.objects.get(id=figure_id).comics.add(comic_id)
   return redirect('figures_detail', figure_id=figure_id)
 
+@login_required
 def add_photo(request, figure_id):
   photo_file = request.FILES.get('photo-file', None)
   if photo_file:
