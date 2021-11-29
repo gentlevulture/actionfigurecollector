@@ -66,9 +66,9 @@
                 style="background-color:"
               ></div>
               <a href="{% url 'comics_detail' comic.id %}">
-                <p>A {{ comic.title }} comic published by {{ comic.publisher }}</p>
+                <p>{{ comic.title }} Issue #{{ comic.issue }} published by {{ comic.publisher }}</p>
               </a>
-              <form action="" method="post">
+              <form action="{% url 'assoc_comic' figure.id comic.id %}" method="post">
                 {% csrf_token %}
                 <button type="submit" class="btn submit">Add Reference</button>
               </form>

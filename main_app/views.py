@@ -71,8 +71,12 @@ class ComicDetail(DetailView):
 
 class ComicUpdate(UpdateView):
   model = Comic
-  fields = ['name', 'color']
+  fields = ['title', 'publisher']
 
 class ComicDelete(DeleteView):
   model = Comic
   success_url = '/comics/'
+
+def assoc_comic(request, figure_id, comic_id):
+  Figure.objects.get(id=figure_id).comics.add(comic_id)
+  return redirect('figures_detail', figure_id=figure_id)
