@@ -24,9 +24,9 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   min-height: 100vh;
-  --nav-bg: rgba(104, 197, 248, .7);
-  --nav-bg-ff: rgba(104, 197, 248, .9);
-  --borders: rgb(36, 116, 248) solid 2px;
+  --nav-bg: rgba(52, 129, 28, 0.267);
+  --nav-bg-ff: rgba(52, 129, 28, 0.267);
+  --borders: rgba(18, 61, 5, 0.781) solid 2px;
   --text-color: rgb(17, 20, 17);
   --link-hover-color: rgb(16, 56, 158);
   --button-bg: rgb(245, 245, 245);
@@ -254,7 +254,7 @@ nav li {
 
     nav,
     .header-logo-container {
-      background: rgba(104, 197, 248, .6);
+      background: rgba(52, 129, 28, 0.267);
       -webkit-backdrop-filter: blur(3px);
       backdrop-filter: blur(3px);
     }
