@@ -94,7 +94,7 @@
   margin: 5px 0;
 }
 
-.cleanings-comic-container > section {
+/* .cleanings-comic-container > section {
   width: 80%;
   min-width: 360px;
   border: var(--borders);
@@ -105,7 +105,7 @@
   flex-direction: column;
   justify-content: center;
   margin-bottom: 20px;
-}
+} */
 
 .subsection-title img {
   height: 42px;

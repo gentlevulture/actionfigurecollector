@@ -13,11 +13,19 @@
 
 <section class="figure-container">
   <div class="figure-img">
-    <img 
-      src="{% static 'images/af-silho.png' %}" 
-      alt="figure"
-      class="usr-img"
-    >
+    {% if figure.photo.url %}
+      <img 
+        src="{{figure.photo.url}}" 
+        alt="A photo of {{figure.name}}"
+        class="usr-img"
+      >
+    {% else %}
+      <img 
+        src="{% static 'images/af-silho.png' %}" 
+        alt="figure"
+        class="usr-img"
+      >
+    {% endif %}
   </div>
   <div class="figure-details">
     <h1>{{ figure.name }}</h1>
@@ -30,55 +38,73 @@
     <div class="figure-actions">
       <a href="{% url 'figures_update' figure.id %}" class="btn warn">Change Details</a>
       <a href="{% url 'figures_delete' figure.id %}" class="btn danger">Remove</a>
+      <h3>Change Photo for {{ figure.name }}</h3>
+      <p id="file-name"></p>
+        <form 
+          action="{% url 'add_photo' figure.id %}"
+          enctype="multipart/form-data"
+          method="POST"
+        >
+          {% csrf_token %}
+          <label class="btn secondary">
+            Choose Photo
+            <input type="file" name="photo-file" id="file-input">
+          </label>
+          <button type="submit" class="btn submit">Upload Photo</button>
+        </form>
     </div>
-    <section class="comics">
-      <div class="subsection-title">
-        <h2>Comics</h2>
-        <img src="{% static 'images/Image-Comics.png' %}" alt="image" />
-        <img src="{% static 'images/DC-Black-Label.png' %}" alt="DCB" />
-        <img src="{% static 'images/Empire-Comics.png' %}" alt="ECVP" />
-      </div>
-      <h3>Comic Art References for {{ figure.name }}</h3>
-      <div class="subsection-content">
-        {% if figure.comics.count %}
-          {% for comic in figure.comics.all %}
-            <div class="comic-container">
-              <div 
-                class="color-block"
-                style="background-color:"
-              ></div>
-              <a href="{% url 'comics_detail' comic.id %}">
-                <p>Inspired by the art of {{ comic.artist }} from the pages of {{ comic.title }} Issue #{{ comic.issue }} </p>
-              </a>
-            </div>
-          {% endfor %}
-        {% else %}
-          <p class="no-comics">{{figure.name}} doesn't have any comics art references</p>
-        {% endif %}
-      </div>
-      <h3>Comic Art References</h3>
-      <div class="subsection-content">
-        {% if comics.count %}
-          {% for comic in comics.all %}
-            <div class="comic-container">
-              <div 
-                class="color-block"
-                style="background-color:"
-              ></div>
-              <a href="{% url 'comics_detail' comic.id %}">
-                <p>{{ comic.title }} Issue #{{ comic.issue }} published by {{ comic.publisher }}</p>
-              </a>
-              <form action="{% url 'assoc_comic' figure.id comic.id %}" method="post">
-                {% csrf_token %}
-                <button type="submit" class="btn submit">Add Reference</button>
-              </form>
-            </div>
-          {% endfor %}
-        {% else %}
-          <p class="all-comics">
-            {{figure.name}} has refrerences in all comics uploaded
-        {% endif %}
-  </div>
-</section>
+    <div class="cleanings-comic-container">
+      <section class="cleanings">
+      </section>
+      <section class="comics">
+        <div class="subsection-title">
+          <h2>Comics</h2>
+          <img src="{% static 'images/Image-Comics.png' %}" alt="image" />
+          <img src="{% static 'images/DC-Black-Label.png' %}" alt="DCB" />
+          <img src="{% static 'images/Empire-Comics.png' %}" alt="ECVP" />
+        </div>
+        <h3>Comic Art References for {{ figure.name }}</h3>
+        <div class="subsection-content">
+          {% if figure.comics.count %}
+            {% for comic in figure.comics.all %}
+              <div class="comic-container">
+                <div 
+                  class="color-block"
+                  style="background-color:">
+                </div>
+                <a href="{% url 'comics_detail' comic.id %}">
+                  <p>Inspired by the art of {{ comic.artist }} from the pages of {{ comic.title }} Issue #{{ comic.issue }} </p>
+                </a>
+              </div>
+            {% endfor %}
+          {% else %}
+            <p class="no-comics">{{figure.name}} doesn't have any comics art references</p>
+          {% endif %}
+        </div>
+        <h3>Comic Art References</h3>
+        <div class="subsection-content">
+          {% if comics.count %}
+            {% for comic in comics.all %}
+              <div class="comic-container">
+                <div 
+                  class="color-block"
+                  style="background-color:">
+                </div>
+                <a href="{% url 'comics_detail' comic.id %}">
+                  <p>{{ comic.title }} Issue #{{ comic.issue }} published by {{ comic.publisher }}</p>
+                </a>
+                <form action="{% url 'assoc_comic' figure.id comic.id %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="btn submit">Add Reference</button>
+                </form>
+              </div>
+            {% endfor %}
+          {% else %}
+            <p class="all-comics">
+              {{figure.name}} has refrerences in all comics uploaded
+          {% endif %}
+        </div>
+      </section>
+    </div>
 
 {% endblock %}
