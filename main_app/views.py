@@ -18,7 +18,7 @@ def about(request):
 
 class FigureCreate(LoginRequiredMixin, CreateView):
   model = Figure
-  fields = '__all__'
+  fields = ['name', 'brand', 'description', 'scale']
   
   def form_valid(self, form):
     form.instance.user = self.request.user
@@ -32,7 +32,10 @@ def figures_index(request):
 @login_required
 def figures_detail(request, figure_id):
   figure = Figure.objects.get(id=figure_id)
-  return render(request, 'figures/detail.html', { 'figure': figure })
+  comics_figure_doesnt_have = Comic.objects.exclude(id__in = figure.comics.all().values_list('id'))
+  return render(request, 'figures/detail.html', { 
+    'figure': figure, 'comics': comics_figure_doesnt_have 
+  })
 
 class FigureUpdate(LoginRequiredMixin, UpdateView):
   model = Figure

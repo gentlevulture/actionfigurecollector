@@ -21,6 +21,7 @@ class Figure(models.Model):
   brand = models.CharField(max_length=30)
   description = models.TextField(max_length=100)
   scale = models.IntegerField()
+  comics = models.ManyToManyField(Comic)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def __str__(self):
