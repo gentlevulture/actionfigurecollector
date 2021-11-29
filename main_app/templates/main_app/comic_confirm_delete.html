@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="page-header">
+  <h1>Remove Comic?</h1>
+  <img src="{% static 'images/batman-signing-up.png' %}" alt="LEGO Batman using a computer"/>
+</div>
+<h2>Are you sure you want to remove {{ object.title }} Issue #{{ object.issue }}?</h2>
+
+<form action="" method="POST" class="form">
+  {% csrf_token %}
+  <a 
+    href="{% url 'comics_detail' comic.id %}" 
+    class="btn secondary"
+  >
+    Cancel
+  </a>
+  <button type="submit" class="btn danger">Remove</button>
+</form>
+
+{% endblock %}
