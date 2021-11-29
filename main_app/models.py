@@ -29,3 +29,10 @@ class Figure(models.Model):
     
   def get_absolute_url(self):
     return reverse('figures_detail', kwargs={'figure_id': self.id})
+
+class Photo(models.Model):
+  url = models.CharField(max_length=250)
+  figure = models.OneToOneField(Figure, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f"Photo for figure_id: {self.figure_id} @{self.url}"

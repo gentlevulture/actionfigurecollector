@@ -6,7 +6,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
-from .models import Figure, Comic
+from .models import Figure, Comic, Photo
+import uuid
+import boto3
+
+S3_BASE_URL = 'https://s3.us-west-1.amazonaws.com/'
+BUCKET = 'action-figure-collector-bucket-of-chum'
 
 # Create your views here.
 
@@ -79,4 +84,21 @@ class ComicDelete(DeleteView):
 
 def assoc_comic(request, figure_id, comic_id):
   Figure.objects.get(id=figure_id).comics.add(comic_id)
+  return redirect('figures_detail', figure_id=figure_id)
+
+def add_photo(request, figure_id):
+  photo_file = request.FILES.get('photo-file', None)
+  if photo_file:
+    s3 = boto3.client('s3')
+    key = uuid.uuid4().hex + photo_file.name[photo_file.name.rfind('.'):]
+    try:
+      s3.upload_fileobj(photo_file, BUCKET, key)
+      url = f"{S3_BASE_URL}{BUCKET}/{key}"
+      photo = Photo(url=url, figure_id=figure_id)
+      figure_photo = Photo.objects.filter(figure_id=figure_id)
+      if figure_photo.first():
+        figure_photo.first().delete()
+      photo.save()
+    except Exception as err:
+      print('An error occurred uploading file to S3: %s' % err)
   return redirect('figures_detail', figure_id=figure_id)
