@@ -8,11 +8,11 @@
 {% block content %}
 
 <section class="page-header">
-  <h1>Figure List</h1>
-  <img src="{% static 'images/' %}" alt="mcfarlane" />
-  <img src="{% static 'images/' %}" alt="dc" />
-  <img src="{% static 'images/' %}" alt="hasbro" />
-  <img src="{% static 'images/' %}" alt="unruly" />
+  <h1>Action Figure List</h1>
+  <img src="{% static 'images/mcfarlane.png' %}" alt="mcfarlane" />
+  <img src="{% static 'images/dc.png' %}" alt="dc" />
+  <img src="{% static 'images/hasbro.png' %}" alt="hasbro" />
+  <img src="{% static 'images/unruly-industries.png' %}" alt="unruly" />
 </section>
 
 <section class="card-container">
@@ -21,8 +21,9 @@
       <div class="card-content">
         <div class="card-img-container">
           <img 
-            src="{% static 'images/' %}" 
+            src="{% static 'images/af-silho.png' %}" 
             alt="figure"
+            class="usr-img"
           >
         </div>
         <h2 class="card-title">{{ figure.name }}</h2>
