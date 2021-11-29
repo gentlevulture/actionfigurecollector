@@ -29,8 +29,17 @@
     </div>
     <nav>
       <ul>
-        <li><a href="/figures">All Figures</a></li>
-        <li><a href="/about">About</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'figures_index' %}">All Figures</a></li>
+          {% comment %} <li><a href="{% url 'comics_index' %}">All Comics</a></li> {% endcomment %}
+          {% comment %} <li><a href="{% url 'figures_create' %}">Add a Figure</a></li> {% endcomment %}
+          {% comment %} <li><a href="{% url 'comics_create' %}">Add a Comic</a></li> {% endcomment %}
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'logout' %}">Log out</a></li>
+        {% else %}
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'home' %}">Login</a></li>
+        {% endif %}
       </ul>
     </nav>
   </header>
