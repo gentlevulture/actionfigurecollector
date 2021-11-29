@@ -4,6 +4,18 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+class Comic(models.Model):
+  artist = models.CharField(max_length=25)
+  title = models.CharField(max_length=50)
+  publisher = models.CharField(max_length=25)
+  issue = models.IntegerField()
+
+  def __str__(self):
+    return self.title
+
+  def get_absolute_url(self):
+    return reverse('comics_detail', kwargs={'pk': self.id})
+
 class Figure(models.Model):
   name = models.CharField(max_length=30)
   brand = models.CharField(max_length=30)

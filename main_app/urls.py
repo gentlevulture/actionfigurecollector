@@ -10,4 +10,5 @@ urlpatterns = [
   path('figures/<int:pk>/update/', views.FigureUpdate.as_view(), name='figures_update'),
   path('figures/<int:pk>/delete/', views.FigureDelete.as_view(), name='figures_delete'),
   path('accounts/signup/', views.signup, name='signup'),
+  path('comics/create/', views.ComicCreate.as_view(), name='comics_create'),
 ]

@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
-from .models import Figure
+from .models import Figure, Comic
 
 # Create your views here.
 
@@ -54,3 +54,7 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'signup.html', context)
+
+class ComicCreate(CreateView):
+  model = Comic
+  fields = '__all__'
