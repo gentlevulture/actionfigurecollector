@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="page-header">
+  <h1>Remove Figure?</h1>
+  <img src="{% static 'images/unbox.png' %}" alt="unbox"/>
+</div>
+<h2>Are you sure you want to remove {{ object.name }} from your collection?</h2>
+
+<form action="" method="POST" class="form">
+  {% csrf_token %}
+  <a 
+    href="{% url 'figures_detail' figure.id %}" 
+    class="btn secondary"
+  >
+    Cancel
+  </a>
+  <button type="submit" class="btn danger">Confirm Removal</button>
+</form>
+
+{% endblock %}
