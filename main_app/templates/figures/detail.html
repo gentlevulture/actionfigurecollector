@@ -38,7 +38,7 @@
         <img src="{% static 'images/DC-Black-Label.png' %}" alt="DCB" />
         <img src="{% static 'images/Empire-Comics.png' %}" alt="ECVP" />
       </div>
-      <h3>Comic art references for {{ figure.name }}</h3>
+      <h3>Comic Art References for {{ figure.name }}</h3>
       <div class="subsection-content">
         {% if figure.comics.count %}
           {% for comic in figure.comics.all %}
@@ -48,7 +48,7 @@
                 style="background-color:"
               ></div>
               <a href="{% url 'comics_detail' comic.id %}">
-                <p>A {{ comic.publisher }} {{ comic.name }}</p>
+                <p>Inspired by the art of {{ comic.artist }} from the pages of {{ comic.title }} Issue #{{ comic.issue }} </p>
               </a>
             </div>
           {% endfor %}
@@ -56,7 +56,7 @@
           <p class="no-comics">{{figure.name}} doesn't have any comics art references</p>
         {% endif %}
       </div>
-      <h3>Available comics</h3>
+      <h3>Comic Art References</h3>
       <div class="subsection-content">
         {% if comics.count %}
           {% for comic in comics.all %}
