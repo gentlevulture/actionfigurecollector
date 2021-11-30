@@ -10,13 +10,22 @@
 {% endblock %}
 
 {% block content %}
+
+<section>
+  <div>
+    <img 
+      src="{% static 'images/comic-page.png' %}" 
+      alt="comic page"
+      class="page"
+    >
+  </div>
+</section>
   
-<div class="card" style="border-color:">
-  <div class="card-bg" style="background-color:"></div>
-  <div class="card-content">
-    <h2>{{ comic.title }}</h2>
+<div>
+  <div>
+    <h2>{{ comic.title }}</2>
     <h3>Issue #{{ comic.issue }}</h3>
-    <hr>A comic published by {{ comic.publisher }} </h4>
+    <h4>A comic published by {{ comic.publisher }} </h4>
   </div>
 </div>
 <a href="{% url 'comics_update' comic.id %}" class="btn warn">Edit</a>

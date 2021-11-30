@@ -50,3 +50,9 @@ main {
   font-size: var(--font-reg);
   z-index: 1;
 }
+
+.page{
+  width: 500px;
+  border-radius: var(--card-border-radius);
+}
+
