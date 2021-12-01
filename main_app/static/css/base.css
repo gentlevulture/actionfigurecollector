@@ -20,6 +20,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: rgb(175, 185, 179);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -43,6 +44,7 @@ body {
   --font-reg: 1.6rem;
   --card-border-radius: 6px;
 }
+
 
 header {
   width: 100%;
