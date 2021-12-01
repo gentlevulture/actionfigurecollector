@@ -28,7 +28,7 @@
     <h4>A comic published by {{ comic.publisher }} </h4>
   </div>
 </div>
-<a href="{% url 'comics_update' comic.id %}" class="btn warn">Edit</a>
-<a href="{% url 'comics_delete' comic.id %}" class="btn danger">Remove</a>
+<a href="{% url 'comics_update' comic.id %}" class="btn submit">Edit</a>
+<a href="{% url 'comics_delete' comic.id %}" class="btn submit">Remove</a>
 
 {% endblock %}
