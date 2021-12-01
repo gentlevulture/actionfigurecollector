@@ -130,16 +130,6 @@ nav li {
   border-color: var(--secondary);
 }
 
-.warn {
-  color: var(--warn);
-  border-color: var(--warn);
-}
-
-.danger {
-  color: var(--danger);
-  border-color: var(--danger);
-}
-
 .page-header h1 {
   font-size: var(--font-xxl);
   margin: 0;
@@ -226,14 +216,6 @@ nav li {
     top: 20px;
     background-color: transparent;
     border-bottom: none;
-  }
-
-  nav,
-  .header-logo-container {
-    margin: 0;
-    background: var(--nav-bg-ff);
-    border: var(--borders);
-    border-radius: 18px;
   }
 
   nav {
