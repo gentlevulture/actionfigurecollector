@@ -39,8 +39,8 @@
     {% endif %}
     <p>{{ figure.description }}</p>
     <div class="figure-actions">
-      <a href="{% url 'figures_update' figure.id %}" class="btn warn">Change Details</a>
-      <a href="{% url 'figures_delete' figure.id %}" class="btn danger">Remove</a>
+      <a href="{% url 'figures_update' figure.id %}" class="btn submit">Change Details</a>
+      <a href="{% url 'figures_delete' figure.id %}" class="btn submit">Remove</a>
       <h3>Change Photo for {{ figure.name }}</h3>
       <p id="file-name"></p>
         <form 
@@ -49,7 +49,7 @@
           method="POST"
         >
           {% csrf_token %}
-          <label class="btn secondary">
+          <label class="btn submit">
             Choose Photo
             <input type="file" name="photo-file" id="file-input">
           </label>
